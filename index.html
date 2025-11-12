@@ -13,6 +13,28 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <script>
+      // Detectar la base path para GitHub Pages
+      (function() {
+        const pathname = window.location.pathname;
+        let basePath = '/';
+        
+        // Remover el nombre del archivo si existe (index.html, movie.html, etc.)
+        const pathWithoutFile = pathname.replace(/\/[^/]+\.html$/, '').replace(/\/$/, '');
+        
+        // Extraer segmentos del path
+        const segments = pathWithoutFile.split('/').filter(s => s);
+        
+        // Si hay segmentos, el primero es el nombre del repositorio
+        // Ejemplo: '/repo-name/' -> segments = ['repo-name'] -> basePath = '/repo-name/'
+        if (segments.length > 0) {
+          basePath = '/' + segments[0] + '/';
+        }
+        
+        // Guardar la base path globalmente
+        window.BASE_PATH = basePath;
+      })();
+    </script>
     <script defer src="./js/search-filters.js"></script>
     <script defer src="./js/app.js"></script>
     <script defer src="./js/login.js"></script>

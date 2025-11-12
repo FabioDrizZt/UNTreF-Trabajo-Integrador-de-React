@@ -1,4 +1,15 @@
-const URL_USUARIOS = '/data/usuarios.json'
+// Usar la base path definida en el HTML, o calcularla si no existe
+const BASE_PATH = window.BASE_PATH || (() => {
+  const pathname = window.location.pathname
+  const pathWithoutFile = pathname.replace(/\/[^/]+\.html$/, '').replace(/\/$/, '')
+  const segments = pathWithoutFile.split('/').filter(s => s)
+  if (segments.length > 0) {
+    return '/' + segments[0] + '/'
+  }
+  return '/'
+})()
+
+const URL_USUARIOS = `${BASE_PATH}data/usuarios.json`
 
 // Función para validar el login
 const validarUsuario = async (username, password) => {
