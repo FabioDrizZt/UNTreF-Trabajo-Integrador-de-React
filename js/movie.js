@@ -1,15 +1,20 @@
-// Usar la base path definida en el HTML, o calcularla si no existe
-const BASE_PATH = window.BASE_PATH || (() => {
-  const pathname = window.location.pathname
-  const pathWithoutFile = pathname.replace(/\/[^/]+\.html$/, '').replace(/\/$/, '')
-  const segments = pathWithoutFile.split('/').filter(s => s)
-  if (segments.length > 0) {
-    return '/' + segments[0] + '/'
+// Usar la función helper global si existe, o definirla
+if (typeof window.getBasePath !== 'function') {
+  window.getBasePath = () => {
+    if (window.BASE_PATH) {
+      return window.BASE_PATH
+    }
+    const pathname = window.location.pathname
+    const pathWithoutFile = pathname.replace(/\/[^/]+\.html$/, '').replace(/\/$/, '')
+    const segments = pathWithoutFile.split('/').filter(s => s)
+    if (segments.length > 0) {
+      return '/' + segments[0] + '/'
+    }
+    return '/'
   }
-  return '/'
-})()
+}
 
-const URL = `${BASE_PATH}data/trailerflix.json`
+const URL = `${window.getBasePath()}data/trailerflix.json`
 const movieDetailsContainer = document.querySelector('.movie-details')
 
 // Obtener el ID de la URL
