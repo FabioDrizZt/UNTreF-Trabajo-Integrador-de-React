@@ -1,5 +1,5 @@
 const generos = ['Ciencia Ficción', 'Drama', 'Suceso Real', 'Suspenso', 'Fantasía', 'Familia', 'Acción', 'Terror', 'Aventura'].sort()
-const URL = '../data/trailerflix.json'
+const URL = '/data/trailerflix.json'
 let contenido
 let armoHTML
 

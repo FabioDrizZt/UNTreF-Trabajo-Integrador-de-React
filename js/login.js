@@ -1,4 +1,4 @@
-const URL_USUARIOS = '../data/usuarios.json'
+const URL_USUARIOS = '/data/usuarios.json'
 
 // Función para validar el login
 const validarUsuario = async (username, password) => {

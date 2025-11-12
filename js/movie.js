@@ -1,4 +1,4 @@
-const URL = '../data/trailerflix.json'
+const URL = '/data/trailerflix.json'
 const movieDetailsContainer = document.querySelector('.movie-details')
 
 // Obtener el ID de la URL
